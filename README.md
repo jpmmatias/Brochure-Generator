@@ -19,7 +19,7 @@ An automated tool that generates professional company brochures in markdown form
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/company-brochure-generator.git
+git clone https://github.com/jpmmatias/Brochure-Generator.git
 ```
 
 2. Create and activate a virtual environment:
