@@ -1,4 +1,3 @@
-```markdown
 # Brochure de Xertica.ai
 
 ## Sobre Xertica.ai
@@ -75,4 +74,3 @@ Teléfonos y ubicaciones en diferentes países de América Latina y EE. UU.:
 ---
 
 *Nota: Este brochure está diseñado para proporcionar información resumida sobre Xertica.ai y sus ofertas. Para obtener más información, visite nuestro sitio web o póngase en contacto con nosotros directamente.*
-```
