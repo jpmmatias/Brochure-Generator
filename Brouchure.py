@@ -1,16 +1,20 @@
 from Website import Website
-from IPython.display import Markdown, display
-from typing import Optional
 from OpenAi import OpenAiService
+import uuid
+
 class Brouchure:
-    def __init__(self, company_name: str, url: str, openAiService: OpenAiService) -> None:
+    def __init__(self, company_name: str, url: str, openAiService: OpenAiService, sections: list[str], language: str) -> None:
+        if not sections:
+            sections = ["About", "Company Culture", "Our Customers", "Connect with Us", "Our Offerings", "Our Mission", "Our Values", "Our Events"]
         self.website = Website(url=url, openAiService=openAiService)
         self.company_name = company_name
         self.open_ai = openAiService
         self.url = url
-        self.system_prompt  = "You are an assistant that analyzes the contents of several relevant pages from a company website \
+        self.id = str(uuid.uuid4())
+        self.language = language
+        self.system_prompt  = f"You are an assistant that analyzes the contents of several relevant pages from a company website \
 and creates a short brochure about the company for prospective customers, investors and recruits. Respond in markdown.\
-Include details of company culture, customers and careers/jobs if you have the information."
+The brochure should be in {language.replace(' ', '')} and include the following sections: {', '.join(sections)} if you have the information."
 
     def get_all_details(self):
         links = self.website.get_links()
@@ -38,5 +42,5 @@ Include details of company culture, customers and careers/jobs if you have the i
         return response
     
     def create_brouchure_markdown_file(self, response):
-        with open(f"{self.company_name}.md", "w") as file:
+        with open(f"{self.company_name}_{self.language}_{self.id}.md", "w") as file:
             file.write(response)
