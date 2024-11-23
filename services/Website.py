@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-from OpenAi import OpenAiService
+from services.OpenAi import OpenAiService
 
 class Website:
     def __init__(self, url:str, openAiService: OpenAiService):

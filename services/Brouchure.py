@@ -1,5 +1,5 @@
-from Website import Website
-from OpenAi import OpenAiService
+from services.Website import Website
+from services.OpenAi import OpenAiService
 import uuid
 
 class Brouchure:
@@ -36,11 +36,8 @@ The brochure should be in {language.replace(' ', '')} and include the following 
         response = self.open_ai.get_chat_completion(self.system_prompt, self.__get_brouchure_user_prompt())
         if generate_markdown_file:
             self.create_brouchure_markdown_file(response)
-            return response
-        else:
-            print(response)
-        return response
+        return response.replace("```markdown","")
     
     def create_brouchure_markdown_file(self, response):
-        with open(f"{self.company_name}_{self.language}_{self.id}.md", "w") as file:
+        with open(f"generated/{self.company_name}_{self.language}_{self.id}.md", "w") as file:
             file.write(response)
